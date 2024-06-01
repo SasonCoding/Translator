@@ -16,7 +16,7 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "translations")
+@Table(name = "translations", uniqueConstraints = @UniqueConstraint(columnNames = {"translation_key_id", "language_code"}))
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class Translation {
     @Id
@@ -27,6 +27,7 @@ public class Translation {
     @JoinColumn(name = "translation_key_id")
     private TranslationKey translationKey;
 
+    @Column(name = "language_code")
     private String languageCode;
 
     private String text;
@@ -34,4 +35,12 @@ public class Translation {
     @CreationTimestamp
     @Column(name = "created_at", updatable = false)
     private Date createdAt;
+
+    @Override
+    public boolean equals(Object object) {
+        if(object instanceof Translation) {
+            return ((Translation) object).getId().equals(this.getLanguageCode());
+        }
+        return false;
+    }
 }

@@ -10,9 +10,8 @@ import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import java.util.HashSet;
 import java.util.Date;
-import java.util.Set;
+import java.util.List;
 
 @Data
 @Builder
@@ -30,8 +29,8 @@ public class Application {
     @NotNull
     private String name;
 
-    @OneToMany(mappedBy = "application", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set<TranslationKey> translationKeys = new HashSet<>();
+    @OneToMany(mappedBy = "application", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    private List<TranslationKey> translationKeys;
 
     @CreationTimestamp
     @Column(name = "created_at", updatable = false)

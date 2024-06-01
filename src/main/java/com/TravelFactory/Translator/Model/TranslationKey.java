@@ -2,6 +2,7 @@ package com.TravelFactory.Translator.Model;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import javassist.expr.Instanceof;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -11,6 +12,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 import java.util.HashSet;
 
@@ -28,6 +30,7 @@ public class TranslationKey {
     private Long id;
 
     @NotNull
+    @Column(name = "key", unique = true, nullable = false)
     private String key;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -35,9 +38,17 @@ public class TranslationKey {
     private Application application;
 
     @OneToMany(mappedBy = "translationKey", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set<Translation> translations = new HashSet<>();
+    private List<Translation> translations;
 
     @CreationTimestamp
     @Column(name = "created_at", updatable = false)
     private Date createdAt;
+
+    @Override
+    public boolean equals(Object object) {
+        if(object instanceof TranslationKey) {
+            return ((TranslationKey) object).getId().equals(this.getKey());
+        }
+        return false;
+    }
 }

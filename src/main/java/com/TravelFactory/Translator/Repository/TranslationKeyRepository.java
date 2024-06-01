@@ -4,6 +4,9 @@ import com.TravelFactory.Translator.Model.TranslationKey;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface TranslationKeyRepository extends CrudRepository<TranslationKey, Long> {
+    List<TranslationKey> findByApplicationId(Long appId);
 }
