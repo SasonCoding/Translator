@@ -5,15 +5,13 @@ import com.TravelFactory.Translator.Dto.ApplicationDto.ApplicationPostDto;
 import com.TravelFactory.Translator.Dto.TranslationKeysDto.TranslationKeysGetDto;
 import com.TravelFactory.Translator.Mapper.ApplicationMapper;
 import com.TravelFactory.Translator.Mapper.TranslationKeysMapper;
-import com.TravelFactory.Translator.Model.Application;
-import com.TravelFactory.Translator.Model.TranslationKey;
+import com.TravelFactory.Translator.Entities.Application;
 import com.TravelFactory.Translator.Repository.ApplicationRepository;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.NoArgsConstructor;
 import org.json.CDL;
 import org.json.JSONArray;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -48,12 +46,16 @@ public class ApplicationService {
         return translationKeyServiceService.getTranslationKeyByAppId(appId);
     }
 
-    public ApplicationGetDto saveApplication(ApplicationPostDto applicationDto) {
-        Application.ApplicationBuilder applicationBuilder = Application.builder()
-               .name(applicationDto.getName());
-        Application application = applicationBuilder.build();
+    public ApplicationGetDto saveApplication(ApplicationPostDto applicationDto) throws DataAccessException {
+        try{
+            Application.ApplicationBuilder applicationBuilder = Application.builder()
+                    .name(applicationDto.getName());
+            Application application = applicationBuilder.build();
 
-        return applicationMapper.applicationGetDto(applicationRepository.save(application));
+            return applicationMapper.applicationGetDto(applicationRepository.save(application));
+        } catch (Exception ex) {
+            throw ex;
+        }
     }
 
     public void deleteApplication(Long id) { applicationRepository.deleteById(id); }
@@ -69,9 +71,7 @@ public class ApplicationService {
             return CDL.toString(translationKeysJsonArray);
         }
         catch (Exception e) {
-            // Add handling for the exception.
-            e.printStackTrace();
+            throw e;
         }
-        return null;
     }
 }

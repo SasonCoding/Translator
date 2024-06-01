@@ -1,9 +1,7 @@
 package com.TravelFactory.Translator.Mapper;
 
-import com.TravelFactory.Translator.Dto.TranslationDto.TranslationSummaryDto;
 import com.TravelFactory.Translator.Dto.TranslationKeysDto.TranslationKeysGetDto;
-import com.TravelFactory.Translator.Model.Translation;
-import com.TravelFactory.Translator.Model.TranslationKey;
+import com.TravelFactory.Translator.Entities.TranslationKey;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;

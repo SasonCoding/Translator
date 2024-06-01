@@ -18,7 +18,6 @@ public class TranslationKeyController {
     @Autowired
     private TranslationKeyService translationKeyService;
 
-    //TODO: The translations isn't retrieving currently.
     @RequestMapping(value = "", method = RequestMethod.GET)
     public ResponseEntity<List<TranslationKeysGetDto>> findTranslationKeys() {
         return ResponseEntity.ok(translationKeyService.getAllTranslationKeys());

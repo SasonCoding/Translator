@@ -1,6 +1,6 @@
 package com.TravelFactory.Translator.Repository;
 
-import com.TravelFactory.Translator.Model.TranslationKey;
+import com.TravelFactory.Translator.Entities.TranslationKey;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

@@ -15,14 +15,8 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(NoSuchElementException.class)
     @ResponseBody
-    public ResponseEntity<String> handleNoSuchElementException(NoSuchElementException ex) { //TODO: add exception handling.
+    public ResponseEntity<String> handleNoSuchElementException(NoSuchElementException ex) {
         return new ResponseEntity<>("Resource not found", HttpStatus.NOT_FOUND);
-    }
-
-    @ExceptionHandler(ValidationException.class)
-    @ResponseBody
-    public ResponseEntity<String> handleValidationException(ValidationException ex) {
-        return new ResponseEntity<>("Validation error: " + ex.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
     @ExceptionHandler(DataAccessException.class)

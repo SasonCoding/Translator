@@ -3,7 +3,6 @@ package com.TravelFactory.Translator.Controller;
 import com.TravelFactory.Translator.Dto.ApplicationDto.ApplicationGetDto;
 import com.TravelFactory.Translator.Dto.ApplicationDto.ApplicationPostDto;
 import com.TravelFactory.Translator.Dto.TranslationKeysDto.TranslationKeysGetDto;
-import com.TravelFactory.Translator.Model.TranslationKey;
 import com.TravelFactory.Translator.Service.ApplicationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.InputStreamResource;

@@ -1,8 +1,7 @@
-package com.TravelFactory.Translator.Model;
+package com.TravelFactory.Translator.Entities;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
-import javassist.expr.Instanceof;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -13,8 +12,6 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
 import java.util.List;
-import java.util.Set;
-import java.util.HashSet;
 
 @Data
 @Builder

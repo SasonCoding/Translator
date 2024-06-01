@@ -1,25 +1,19 @@
 package com.TravelFactory.Translator.Service;
 
-import com.TravelFactory.Translator.Dto.TranslationDto.TranslationPostDto;
 import com.TravelFactory.Translator.Dto.TranslationKeysDto.TranslationKeysGetDto;
 import com.TravelFactory.Translator.Dto.TranslationKeysDto.TranslationKeysPostDto;
 import com.TravelFactory.Translator.Mapper.TranslationKeysMapper;
 import com.TravelFactory.Translator.Mapper.TranslationMapper;
-import com.TravelFactory.Translator.Model.Application;
-import com.TravelFactory.Translator.Model.Translation;
-import com.TravelFactory.Translator.Model.TranslationKey;
+import com.TravelFactory.Translator.Entities.Application;
+import com.TravelFactory.Translator.Entities.Translation;
+import com.TravelFactory.Translator.Entities.TranslationKey;
 import com.TravelFactory.Translator.Repository.ApplicationRepository;
 import com.TravelFactory.Translator.Repository.TranslationKeyRepository;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
-import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
@@ -89,11 +83,6 @@ public class TranslationKeyService {
 
         return translationKeysMapper.translationKeysGetDto(savedTranslationKey);
     }
-
-//    public void saveTranslationkeysJson(Long id, String translationKeyJson) throws JsonProcessingException {
-//        ObjectMapper objectMapper = new ObjectMapper();
-//        objectMapper.readValue(translationKeyJson, TranslationKey[].class);
-//    }
 
     public void deleteTranslationKey(Long id) { translationKeyRepository.deleteById(id); }
 }

@@ -1,9 +1,8 @@
 package com.TravelFactory.Translator.Mapper;
 
 import com.TravelFactory.Translator.Dto.ApplicationDto.ApplicationGetDto;
-import com.TravelFactory.Translator.Model.Application;
+import com.TravelFactory.Translator.Entities.Application;
 import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
 
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.TravelFactory.Translator.Model;
+package com.TravelFactory.Translator.Entities;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
