@@ -36,24 +36,6 @@ make sure to use the currect json format when deploying it to the selected appli
   ]
 }
 
-[Uploading bla.j{
-  "entries": [
-    {
-      "key": "message",
-      "translations": [
-        {
-          "languageCode": "en",
-          "text": "Welcome to our application!"
-        },
-        {
-          "languageCode": "fr",
-          "text": "Bienvenue dans notre application!"
-        }
-      ]
-    }
-  ]
-}son…]()
-
 
 Clone the repository.
 Navigate to the project directory.
