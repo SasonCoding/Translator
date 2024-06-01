@@ -30,14 +30,9 @@ public class TranslationKeyController {
     }
 
     @RequestMapping(value = "/{appId}", method = RequestMethod.POST)
-    public ResponseEntity<TranslationKeysGetDto> createTranslationKey(@PathVariable Long appId, @RequestBody @Valid TranslationKeysPostDto translationKeysPostDto) {
-        return ResponseEntity.ok(translationKeyService.saveTranslationKey(appId, translationKeysPostDto));
+    public ResponseEntity<List<TranslationKeysGetDto>> createTranslationKey(@PathVariable Long appId, @RequestBody @Valid List<TranslationKeysPostDto> translationKeysPostDtoList) {
+        return ResponseEntity.ok(translationKeyService.saveTranslationKey(appId, translationKeysPostDtoList));
     }
-//    @RequestMapping(value = "/{appId}/deploy", method = RequestMethod.POST)
-//    public ResponseEntity<?> createApplication(@PathVariable Long appId, @RequestBody String translationKeyJson) throws JsonProcessingException {
-//        translationKeyService.saveTranslationkeysJson(appId, translationKeyJson);
-//        return ResponseEntity.ok("All good!");
-//    }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public ResponseEntity<String> deleteTranslationKey(@PathVariable("id") Long id) {

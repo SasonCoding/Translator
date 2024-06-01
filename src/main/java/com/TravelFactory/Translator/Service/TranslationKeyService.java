@@ -54,13 +54,19 @@ public class TranslationKeyService {
         return translationKeysMapper.translationKeysGetDtos(translationKeyRepository.findByApplicationId(appId));
     }
 
-    public TranslationKeysGetDto saveTranslationKey(Long appId, TranslationKeysPostDto translationKeysPostDto) {
+    public List<TranslationKeysGetDto> saveTranslationKey(Long appId, List<TranslationKeysPostDto> translationKeysPostDtoList) {
         if (appId == null) {
             throw new NoSuchElementException("Application is missing");
         }
         applicationRepository.findById(appId).orElseThrow(() -> new NoSuchElementException("Application not found with id: " + appId));
 
-        if(translationKeysPostDto.getTranslationSummaryDtos().isEmpty()) {
+        return translationKeysPostDtoList.stream()
+                .map(translationKeysPostDto -> saveTranslationKeyInternal(appId, translationKeysPostDto))
+                .collect(Collectors.toList());
+    }
+
+    private TranslationKeysGetDto saveTranslationKeyInternal(Long appId, TranslationKeysPostDto translationKeysPostDto) {
+        if (translationKeysPostDto.getTranslationSummaryDtos().isEmpty()) {
             throw new IllegalStateException("TranslationKeys must have at least one translation");
         }
 
@@ -69,7 +75,6 @@ public class TranslationKeyService {
                 .application(Application.builder().id(appId).build())
                 .build();
 
-        // Maby add a try catch block.
         TranslationKey savedTranslationKey = translationKeyRepository.save(translationKey);
 
         List<Translation> translations = translationKeysPostDto.getTranslationSummaryDtos().stream()
@@ -79,8 +84,8 @@ public class TranslationKeyService {
                     return translation;
                 }).collect(Collectors.toList());
 
-        List<Translation> translationList = translationService.saveTranslations(translations);
-        savedTranslationKey.setTranslations(translationList);
+        List<Translation> savedTranslations = translationService.saveTranslations(translations);
+        savedTranslationKey.setTranslations(savedTranslations);
 
         return translationKeysMapper.translationKeysGetDto(savedTranslationKey);
     }
