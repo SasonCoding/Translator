@@ -1,4 +1,4 @@
-![Screenshot 2024-06-01 155330](https://github.com/SasonCoding/Translator/assets/76630855/17b98867-5e94-4add-991a-7cff5f188024)TravelFactory Translation Management Application
+[bla.json](https://github.com/user-attachments/files/15522837/bla.json)![Screenshot 2024-06-01 155330](https://github.com/SasonCoding/Translator/assets/76630855/17b98867-5e94-4add-991a-7cff5f188024)TravelFactory Translation Management Application
 Overview
 
 Technologies Used
@@ -35,6 +35,25 @@ make sure to use the currect json format when deploying it to the selected appli
     }
   ]
 }
+
+[Uploading bla.j{
+  "entries": [
+    {
+      "key": "message",
+      "translations": [
+        {
+          "languageCode": "en",
+          "text": "Welcome to our application!"
+        },
+        {
+          "languageCode": "fr",
+          "text": "Bienvenue dans notre application!"
+        }
+      ]
+    }
+  ]
+}son…]()
+
 
 Clone the repository.
 Navigate to the project directory.
